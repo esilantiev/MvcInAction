@@ -24,6 +24,6 @@ namespace MvcInAction.Repositories
             throw new NotImplementedException();
         }
 
-
+        //some comment
     }
 }
