@@ -1,0 +1,39 @@
+﻿@model MvcInAction.Models.GuestResponseModel
+           @using System.Web.Helpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+</head>
+<body>
+    <div> 
+        @{
+            try
+            {
+                WebMail.SmtpServer = "smtp.mail.ru";
+                WebMail.SmtpPort = 587;
+                WebMail.EnableSsl = true;
+                WebMail.SmtpUseDefaultCredentials = false;
+                WebMail.UserName = "atlanta_and@mail.ru";
+                WebMail.Password = "";
+                WebMail.From = "atlanta_and@mail.ru";
+                WebMail.Send(@Model.Email, "Invitation", "Thanks for your answer");
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+        }
+                <h1>Thank you, @Model.Name!</h1>
+    </div>
+</body>
+</html>

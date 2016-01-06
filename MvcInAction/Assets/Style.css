@@ -1,0 +1,11 @@
+﻿body {
+}
+
+.input-validation-error {
+    border-color: red;
+    border-width: 1px;
+}
+
+.field-validation-error{
+    color:red;
+}

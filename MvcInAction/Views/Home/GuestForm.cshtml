@@ -1,0 +1,33 @@
+﻿@model MvcInAction.Models.GuestResponseModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/Style.css" />
+    <title>GuestForm</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm())
+        {
+            <p>Your name: @Html.TextBoxFor(x=>x.Name) @Html.ValidationMessageFor(x=>x.Name)</p>
+            <p>Your phone: @Html.TextBoxFor(x => x.Phone) @Html.ValidationMessageFor(x => x.Phone)</p>
+            <p>Your email: @Html.TextBoxFor(x => x.Email) @Html.ValidationMessageFor(x => x.Email)</p>
+            <p>Will you attend? 
+                @Html.DropDownListFor(x=>x.WillAttend,
+               new[] { 
+                       new SelectListItem(){Text="Yes", Value=bool.TrueString},
+                       new SelectListItem(){Text="No", Value=bool.FalseString}                       
+                     }, 
+                     "Chose an option")@if (!ViewData.ModelState.IsValid) { @Html.ValidationMessageFor(x => x.WillAttend)}</p>
+            <input type="submit" value="Submit RSVP"/>
+        }
+    </div>
+</body>
+</html>
